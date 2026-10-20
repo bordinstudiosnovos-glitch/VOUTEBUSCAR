@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VOUTEBUSCAR</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="static/style.css">
+<link rel="manifest" href="static/manifest.webmanifest">
+<meta name="theme-color" content="#2563eb">
+</head>
+<body>
+<div id="map"></div>
+
+<aside id="panel">
+  <div class="panel-head">
+    <div class="brand"><span class="dot"></span> VOUTEBUSCAR</div>
+    <span id="sync" class="sync-badge off" title="Sincronização Google Drive">Drive</span>
+    <button id="pro" class="sync-badge off" hidden title="Unlock Pro">🔒 Free</button>
+    <button id="toggle" class="icon" title="Ocultar painel">▾</button>
+  </div>
+
+  <div class="panel-body">
+    <label class="field">Dispositivo
+      <select id="device"></select>
+    </label>
+    <div id="latest" class="latest"></div>
+    <button id="park" class="park">🅿️ Estacionar e proteger</button>
+    <div class="row">
+      <button id="locate" class="primary">📍 Localizar agora</button>
+      <button id="ring">🔔 Ring</button>
+    </div>
+
+    <div class="field" >Histórico
+      <div class="chips" id="ranges">
+        <button data-h="today">Hoje</button>
+        <button data-h="24">24 h</button>
+        <button data-h="48">2 dias</button>
+        <button data-h="168" class="on">7 dias</button>
+        <button data-h="720">30 dias</button>
+        <button data-h="2160">90 dias</button>
+        <button data-h="8760">1 ano</button>
+        <button data-h="custom">Personalizado</button>
+      </div>
+    </div>
+    <div id="custom" class="custom" hidden>
+      <label>De<input type="datetime-local" id="from"></label>
+      <label>Até<input type="datetime-local" id="to"></label>
+      <button id="applyCustom">Mostrar</button>
+    </div>
+
+    <div class="stats" id="stats"></div>
+    <section class="frequent"><h3>Lugares mais frequentes</h3><div id="frequentPlaces" class="frequent-list"><span class="muted">Carregando histórico…</span></div></section>
+
+    <div class="field" >Reprodução
+      <div class="playback">
+        <button id="play" class="icon" title="Reproduzir">▶</button>
+        <input type="range" id="scrub" min="0" max="0" value="0">
+      </div>
+      <div class="muted small" id="scrubLabel">&nbsp;</div>
+    </div>
+
+    <label class="check"><input type="checkbox" id="showPoints" checked> Mostrar pontos individuais</label>
+    <label class="check"><input type="checkbox" id="autoRefresh" checked> Atualizar automaticamente a cada minuto</label>
+
+    <div class="row">
+      <button id="pollNow">Verificar agora</button>
+      <button id="csv">Exportar CSV</button>
+      <button id="gpx">Exportar GPX</button>
+    </div>
+    <div class="muted small" id="pollStatus"></div>
+    <div class="row foot">
+      <button id="rename" class="link">Renomear dispositivo</button>
+      <button id="server" class="link" hidden>Alterar servidor</button>
+      <button id="logout" class="link">Sair</button>
+    </div>
+  </div>
+</aside>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="static/app.js"></script>
+</body>
+</html>
